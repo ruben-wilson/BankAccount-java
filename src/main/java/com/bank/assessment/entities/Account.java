@@ -1,7 +1,10 @@
 package com.bank.assessment.entities;
 
 import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
@@ -12,29 +15,28 @@ public class Account {
   
   @Id
   private int ID;
-  private int accountNum;
-  private String firstName;
+  private String accountnum;
+  private String firstname;
   private String surname;
   private double balance;
   private String date;
 
-  @ManyToOne
-  @JoinColumn(name = "ID")
-  private User user_ID;
 
-  @OneToMany(mappedBy = "ID")
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "user_id")
+  private User user;
+
+  @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
   private List<Transaction> transactions;
 
-  public Account(int iD, int accountNum, String firstName, String surname, double balance, String date) {
-    this.ID = iD;
-    this.accountNum = accountNum;
-    this.firstName = firstName;
+  public Account(String accountnum, String firstname, String surname, double balance, String date) {
+    super();
+    this.accountnum = accountnum;
+    this.firstname = firstname;
     this.surname = surname;
     this.balance = balance;
     this.date = date;
   }
-
-  
 
   public int getID() {
     return ID;
@@ -44,28 +46,20 @@ public class Account {
     ID = iD;
   }
 
-  public User getUser_ID() {
-    return user_ID;
+  public String getAccountNum() {
+    return accountnum;
   }
 
-  public void setUser_ID(User user) {
-    this.user_ID = user;
-  }
-
-  public int getAccountNum() {
-    return accountNum;
-  }
-
-  public void setAccountNum(int accountNum) {
-    this.accountNum = accountNum;
+  public void setAccountNum(String accountnum) {
+    this.accountnum = accountnum;
   }
 
   public String getFirstName() {
-    return firstName;
+    return firstname;
   }
 
-  public void setFirstName(String firstName) {
-    this.firstName = firstName;
+  public void setFirstName(String firstname) {
+    this.firstname = firstname;
   }
 
   public String getSurname() {
@@ -90,6 +84,37 @@ public class Account {
 
   public void setDate(String date) {
     this.date = date;
+  }
+
+
+
+  public User getUser() {
+    return user;
+  }
+
+
+
+  public void setUser(User user) {
+    this.user = user;
+  }
+
+
+
+  public List<Transaction> getTransactions() {
+    return transactions;
+  }
+
+
+
+  public void setTransactions(List<Transaction> transactions) {
+    this.transactions = transactions;
+  }
+
+
+  @Override
+  public String toString() {
+    return "Account [ID=" + ID + ", accountnum=" + accountnum + ", firstname=" + firstname + ", surname=" + surname
+        + ", balance=" + balance + ", date=" + date + ", user=" + user + ", transactions=" + transactions + "]";
   }
   
   

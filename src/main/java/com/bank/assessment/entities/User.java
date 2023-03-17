@@ -1,6 +1,8 @@
 package com.bank.assessment.entities;
 
 import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -10,48 +12,59 @@ public class User {
 
   @Id
   private int ID;
-  private String firstName;
+  private String firstname;
   private String surname;
   private String email;
+  private String password;
 
-  public User(int iD, String firstName, String surname, String email, List<Account> accounts,
-      List<Transaction> transactions) {
-    ID = iD;
-    this.firstName = firstName;
+  @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+  private List<Account> accounts;
+
+  @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+  private List<Transaction> transactions;
+
+
+  public User(String firstname, String surname, String email, String password) {
+    super();
+    this.firstname = firstname;
     this.surname = surname;
     this.email = email;
+    this.password = password;
+  }
+
+  public User(String email, String password) {
+    super();
+    this.email = email;
+    this.password = password;
+  }
+
+  
+
+  public User(int iD, String firstname, String surname, String email, String password, List<Account> accounts,
+      List<Transaction> transactions) {
+    this.ID = iD;
+    this.firstname = firstname;
+    this.surname = surname;
+    this.email = email;
+    this.password = password;
     this.accounts = accounts;
     this.transactions = transactions;
   }
 
-
-  @OneToMany(mappedBy = "ID")
-  private List<Account> accounts;
-
-  public User(int iD, String firstName, String surname, String email, List<Account> accounts) {
+  public User(int iD, String firstname, String surname, String email, String password, List<Transaction> transactions) {
     ID = iD;
-    this.firstName = firstName;
+    this.firstname = firstname;
     this.surname = surname;
     this.email = email;
-    this.accounts = accounts;
+    this.password = password;
+    this.transactions = transactions;
   }
-
-
-  @OneToMany(mappedBy = "ID")
-  private List<Transaction> transactions;
-
 
   public User() {
     super();
   }
 
-
-  public User(int iD, String firstName, String surname, String email) {
-    ID = iD;
-    this.firstName = firstName;
-    this.surname = surname;
-    this.email = email;
-  }
+  
 
 
   public int getID() {
@@ -64,13 +77,13 @@ public class User {
   }
 
 
-  public String getFirstName() {
-    return firstName;
+  public String getFirstname() {
+    return firstname;
   }
 
 
-  public void setFirstName(String firstName) {
-    this.firstName = firstName;
+  public void setFirstname(String firstname) {
+    this.firstname = firstname;
   }
 
 
@@ -93,29 +106,29 @@ public class User {
     this.email = email;
   }
 
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
 
   public List<Account> getAccounts() {
     return accounts;
   }
 
-
   public void setAccounts(List<Account> accounts) {
     this.accounts = accounts;
   }
-
 
   public List<Transaction> getTransactions() {
     return transactions;
   }
 
-
   public void setTransactions(List<Transaction> transactions) {
     this.transactions = transactions;
   }
 
-  
-
-
-  
 
 }

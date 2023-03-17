@@ -1,6 +1,7 @@
 package com.bank.assessment.entities;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
@@ -11,7 +12,7 @@ public class Transaction {
   @Id
   private int ID;
 
-  private String transactionType;
+  private String transactiontype;
 
   private double amount;
 
@@ -19,7 +20,7 @@ public class Transaction {
 
   private String date;
 
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "user_ID")
   private User user;
 
@@ -29,9 +30,9 @@ public class Transaction {
 
   
 
-  public Transaction(int iD, String transactionType, double amount, double balance, String date) {
+  public Transaction(int iD, String transactiontype, double amount, double balance, String date) {
     ID = iD;
-    this.transactionType = transactionType;
+    this.transactiontype = transactiontype;
     this.amount = amount;
     this.balance = balance;
     this.date = date;
@@ -46,11 +47,11 @@ public class Transaction {
   }
 
   public String getTransactionType() {
-    return transactionType;
+    return transactiontype;
   }
 
-  public void setTransactionType(String transactionType) {
-    this.transactionType = transactionType;
+  public void setTransactionType(String transactiontype) {
+    this.transactiontype = transactiontype;
   }
 
   public double getAmount() {
