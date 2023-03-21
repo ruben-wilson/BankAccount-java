@@ -23,8 +23,10 @@ public class UserController {
 
   @PostMapping("/login")
   public User loginUser(@RequestBody User user) {
+    System.out.println(user);
     User response = userService.login(user.getEmail(), user.getPassword());
 
+    System.out.println("UserController 28: " + response);
     return response;
   }
 

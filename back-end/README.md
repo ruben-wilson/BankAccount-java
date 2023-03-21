@@ -88,4 +88,21 @@ i should be able to create an
 account
 
 as a user 
-i should be able to create a savings account
+i should be able to create a account
+
+**sprint2**
+
+as a user 
+i should be able to see all 
+accounts in dashboard 
+
+as a user 
+i should be able to deposit 
+money into my account 
+
+as a user 
+i should be able to withdraw money from my account 
+
+as a user 
+i should be able to see
+all transactions related to an account 

@@ -1,5 +1,8 @@
 package com.bank.assessment.controllers;
 
+import java.util.List;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,40 +12,40 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.yaml.snakeyaml.error.YAMLException;
 
+import com.bank.assessment.dtos.UserAccountDTO;
 import com.bank.assessment.entities.Account;
 import com.bank.assessment.entities.User;
 import com.bank.assessment.services.AccountService;
+import com.bank.assessment.services.AccountServiceImpl;
 
 import jakarta.servlet.http.HttpSession;
 
 @RestController
-@SessionAttributes("user")
 public class AccountController {
 
-  @ModelAttribute("user")
-  public User setUser(){
-    return new User();
-  } 
-
   @Autowired
-  AccountService accountService;
+  AccountServiceImpl accountService;
   
   @PostMapping("/account")
-  public User addAccount(@ModelAttribute("user") User user){
+  public String addAccount(@RequestBody UserAccountDTO dto){
 
-    System.out.println("Account controller 25: " + user);
-    // if(user == null){
-    //   return "SignIn";
-    // }else{
-    //   account.setUser(user);
-    //   Account response = accountService.addAccount(account);
+    User user = new User(dto.getID(), dto.getFirstname(), dto.getSurname(), dto.getEmail(), dto.getPassword());
 
-    //   System.out.println(account);
+    Account accountDetails = new Account(null, dto.getType(), dto.getFirstname(), dto.getSurname(), dto.getBalance(), null);
 
-    //   return response != null ? "success" : "Error";
-    // }
-  
-    return user;
+    System.out.println("Account controller 25: " + dto);
+    
+    Account account = accountService.createAccount(accountDetails);
+
+    account.setUser(user);
+
+    System.out.println("Account controller 40: " + account);
+
+    accountService.addAccount(account);
+
+    return "recieved";
+
+   
   } 
   
 }

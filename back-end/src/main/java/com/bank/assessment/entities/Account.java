@@ -5,6 +5,8 @@ import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
@@ -14,8 +16,11 @@ import jakarta.persistence.JoinColumn;
 public class Account {
   
   @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int ID;
+
   private String accountnum;
+  private String type;
   private String firstname;
   private String surname;
   private double balance;
@@ -33,9 +38,10 @@ public class Account {
     super();
   }
 
-  public Account(String accountnum, String firstname, String surname, double balance, String date) {
+  public Account(String accountnum, String type, String firstname, String surname, double balance, String date) {
     super();
     this.accountnum = accountnum;
+    this.type = type;
     this.firstname = firstname;
     this.surname = surname;
     this.balance = balance;
@@ -102,7 +108,7 @@ public class Account {
     this.user = user;
   }
 
-
+  
 
   public List<Transaction> getTransactions() {
     return transactions;
@@ -115,11 +121,22 @@ public class Account {
   }
 
 
+  public String getType() {
+    return type;
+  }
+
+  public void setType(String type) {
+    this.type = type;
+  }
+
   @Override
   public String toString() {
-    return "Account [ID=" + ID + ", accountnum=" + accountnum + ", firstname=" + firstname + ", surname=" + surname
-        + ", balance=" + balance + ", date=" + date + ", user=" + user + ", transactions=" + transactions + "]";
+    return "Account [ID=" + ID + ", accountnum=" + accountnum + ", type=" + type + ", firstname=" + firstname
+        + ", surname=" + surname + ", balance=" + balance + ", date=" + date + ", user=" + user + ", transactions="
+        + transactions + "]";
   }
+
+
   
   
 }

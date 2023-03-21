@@ -22,8 +22,9 @@ public class User {
     this.password = password;
   }
 
-  public User(String firstname, String surname, String email, String password) {
+  public User(int ID, String firstname, String surname, String email, String password) {
     super();
+    this.ID = ID;
     this.firstname = firstname;
     this.surname = surname;
     this.email = email;
@@ -86,22 +87,6 @@ public class User {
     return "User [ID=" + ID + ", firstname=" + firstname + ", surname=" + surname + ", email=" + email + ", password="
         + password + ", accounts=" + accounts + ", transactions=" + transactions + "]";
   }
-
-  // public List<Account> getAccounts() {
-  //   return accounts;
-  // }
-
-  // public void setAccounts(List<Account> accounts) {
-  //   this.accounts = accounts;
-  // }
-
-  // public List<Transaction> getTransactions() {
-  //   return transactions;
-  // }
-
-  // public void setTransactions(List<Transaction> transactions) {
-  //   this.transactions = transactions;
-  // }
 
   
 

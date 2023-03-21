@@ -4,6 +4,8 @@ import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
@@ -11,6 +13,7 @@ import jakarta.persistence.OneToMany;
 public class User {
 
   @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int ID;
   private String firstname;
   private String surname;
@@ -33,17 +36,18 @@ public class User {
     this.password = password;
   }
 
-  public User(String firstname, String surname, String email, String password) {
+  public User(int id, String firstname, String surname, String email, String password) {
     super();
+    this.ID = id;
     this.firstname = firstname;
     this.surname = surname;
     this.email = email;
     this.password = password;
   }
 
-  public User(int iD, String firstname, String surname, String email, String password, List<Account> accounts,
+  public User(int id, String firstname, String surname, String email, String password, List<Account> accounts,
       List<Transaction> transactions) {
-    this.ID = iD;
+    this.ID = id;
     this.firstname = firstname;
     this.surname = surname;
     this.email = email;
@@ -124,11 +128,8 @@ public class User {
     this.transactions = transactions;
   }
 
-  @Override
-  public String toString() {
-    return "User [ID=" + ID + ", firstname=" + firstname + ", surname=" + surname + ", email=" + email + ", password="
-        + password + ", accounts=" + accounts + ", transactions=" + transactions + "]";
-  }
+
+  
   
 
 

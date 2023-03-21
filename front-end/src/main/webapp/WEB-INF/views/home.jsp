@@ -51,13 +51,19 @@
               </div>
             </div>
 
+          
             <div class="col-xl-3 col-sm-6 col-12">
+              <form action="/account" method="get">
               <div class="card">
                 <div class="card-content">
                   <div class="card-body">
                     <div class="media d-flex">
                       <div class="align-self-center">
-                        <i class="icon-settings success font-large-2 float-left"></i>
+                      
+                        <button type="submit" class="btn" >
+                          <i class="icon-settings success font-large-2 float-left"></i>
+                        </button>
+                        
                       </div>
                       <div class="media-body text-right">
                         <h3>Request new Account</h3>
@@ -67,7 +73,9 @@
                   </div>
                 </div>
               </div>
+              </form>
             </div>
+        
             
             <div class="col-xl-3 col-sm-6 col-12">
               <div class="card">
