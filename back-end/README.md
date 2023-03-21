@@ -71,12 +71,21 @@ CREATE table Account(
    PRIMARY KEY(ID),
    FOREIGN KEY (User_ID) REFERENCES User(ID)
 );
-
-
-
-
-
-
-
-
 ```
+
+
+## Sprints
+
+**sprint1**
+
+
+as a user 
+i should be able to sign in 
+with my email and password 
+
+as a user 
+i should be able to create an
+account
+
+as a user 
+i should be able to create a savings account

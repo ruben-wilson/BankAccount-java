@@ -29,6 +29,10 @@ public class Account {
   @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
   private List<Transaction> transactions;
 
+  public Account(){
+    super();
+  }
+
   public Account(String accountnum, String firstname, String surname, double balance, String date) {
     super();
     this.accountnum = accountnum;
