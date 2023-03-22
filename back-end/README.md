@@ -106,3 +106,9 @@ i should be able to withdraw money from my account
 as a user 
 i should be able to see
 all transactions related to an account 
+
+
+**Bugs to fix**
+
+on /account post controller in front end:
+the @modelAttribute when trying to access user mistakes the info coming from the form and renaims the user attr in the session. 

@@ -2,12 +2,14 @@ package com.bank.frontend.model;
 
 public class Account {
 
-  public String firstname;
-  public String accountnum;
-  public String date;
-  public String surname;
-  public String type;
-  public double balance;
+  private String firstname;
+  private String accountnum;
+  private String date;
+  private String surname;
+  private String type;
+  private double balance;
+  private String inlineRadioOptions;
+  
 
   public Account(){
     super();
@@ -30,12 +32,15 @@ public class Account {
     this.date = date;
   }
   
+  public String createType(){
+    return this.type == null ? this.getInlineRadioOptions() : this.getType();
+  }
 
-  public String getFirstName() {
+  public String getFirstname() {
     return firstname;
   }
 
-  public void setFirstName(String firstname) {
+  public void setFirstname(String firstname) {
     this.firstname = firstname;
   }
 
@@ -55,10 +60,6 @@ public class Account {
     this.type = type;
   }
 
-  @Override
-  public String toString() {
-    return "Account [firstname=" + firstname + ", surname=" + surname + ", type=" + type + ", balance=" + balance + "]";
-  }
 
 
   public double getBalance() {
@@ -86,6 +87,22 @@ public class Account {
     this.date = date;
   }
 
+  public String getInlineRadioOptions() {
+    return inlineRadioOptions;
+  }
+
+  public void setInlineRadioOptions(String inlineRadioOptions) {
+    this.inlineRadioOptions = inlineRadioOptions;
+  }
+
+  @Override
+  public String toString() {
+    return "Account [firstname=" + firstname + ", accountnum=" + accountnum + ", date=" + date + ", surname=" + surname
+        + ", type=" + type + ", balance=" + balance + ", inlineRadioOptions=" + inlineRadioOptions + "]";
+  }
+
+
+  
   
 
   

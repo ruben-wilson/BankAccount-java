@@ -38,15 +38,21 @@ public class AccountController {
 
   @PostMapping("/account")
   public String postAccount(@ModelAttribute Account account, @ModelAttribute User user){
+    
+    account.setType(account.createType());
 
+    // System.out.println("account 29: " + account);
+
+    // System.out.println("account 29: " + user);
+    
     UserAccountDTO dto = new UserAccountDTO(user, account);
 
     String url = "http://localhost:8080/account";
     
-    System.out.println("account 29: " + account + " " + user);
     System.out.println("account 30: " + dto);
 
     String response = restTemplate.postForObject(url, user, String.class);
+    
     System.out.println("account 32: " + response);
     return "redirect:/";
   }
