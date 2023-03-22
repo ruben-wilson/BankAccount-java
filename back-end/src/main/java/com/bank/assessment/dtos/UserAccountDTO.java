@@ -1,8 +1,5 @@
 package com.bank.assessment.dtos;
 
-import com.bank.assessment.entities.Account;
-import com.bank.assessment.entities.User;
-
 public class UserAccountDTO {
   
   private int ID;
@@ -13,25 +10,8 @@ public class UserAccountDTO {
   private String type;
   private double balance;
 
-  public UserAccountDTO(User user, Account account) {
-    this.ID = user.getID();
-    this.email = user.getEmail();
-    this.password = user.getPassword();
-    this.firstname = user.getFirstname();
-    this.surname = user.getSurname();
-
-    this.type = account.getType();
-    this.balance = account.getBalance();
-  }
-
   public UserAccountDTO() {
     super();
-  }
-
-  @Override
-  public String toString() {
-    return "UserAccountDTO [ID=" + ID + ", email=" + email + ", password=" + password + ", firstname=" + firstname
-        + ", surname=" + surname + ", type=" + type + ", balance=" + balance + "]";
   }
 
   public int getID() {
@@ -90,4 +70,11 @@ public class UserAccountDTO {
     this.balance = balance;
   }
 
+  @Override
+  public String toString() {
+    return "UserAccountDTO [ID=" + ID + ", email=" + email + ", password=" + password + ", firstname=" + firstname
+        + ", surname=" + surname + ", type=" + type + ", balance=" + balance + "]";
+  }
+
+  
 }

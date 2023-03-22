@@ -17,6 +17,7 @@ import com.bank.assessment.entities.Account;
 import com.bank.assessment.entities.User;
 import com.bank.assessment.services.AccountService;
 import com.bank.assessment.services.AccountServiceImpl;
+import com.bank.assessment.services.UserServiceImpl;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -25,16 +26,19 @@ public class AccountController {
 
   @Autowired
   AccountServiceImpl accountService;
+
+  @Autowired
+  UserServiceImpl userService;
   
   @PostMapping("/account")
   public String addAccount(@RequestBody UserAccountDTO dto){
 
-    User user = new User(dto.getID(), dto.getFirstname(), dto.getSurname(), dto.getEmail(), dto.getPassword());
+    User user = userService.findUserByEmail(dto.getEmail());
+
+    System.out.println("Account controller 25: " + dto);
 
     Account accountDetails = new Account(null, dto.getType(), dto.getFirstname(), dto.getSurname(), dto.getBalance(), null);
 
-    System.out.println("Account controller 25: " + dto);
-    
     Account account = accountService.createAccount(accountDetails);
 
     account.setUser(user);

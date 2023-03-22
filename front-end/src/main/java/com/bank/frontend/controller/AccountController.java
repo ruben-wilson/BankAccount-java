@@ -51,8 +51,8 @@ public class AccountController {
     
     System.out.println("account 30: " + dto);
 
-    String response = restTemplate.postForObject(url, user, String.class);
-    
+    String response = restTemplate.postForObject(url, dto, String.class);
+
     System.out.println("account 32: " + response);
     return "redirect:/";
   }

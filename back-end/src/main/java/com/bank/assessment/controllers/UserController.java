@@ -18,6 +18,7 @@ import com.bank.assessment.entities.User;
 
 @RestController
 public class UserController {
+  
   @Autowired
   UserService userService;
 
