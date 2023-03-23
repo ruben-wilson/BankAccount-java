@@ -2,7 +2,7 @@ package com.bank.assessment.dtos;
 
 public class UserAccountDTO {
   
-  private int ID;
+  private int Id;
   private String email;
   private String password;
   private String firstname;
@@ -14,12 +14,12 @@ public class UserAccountDTO {
     super();
   }
 
-  public int getID() {
-    return ID;
+  public int getId() {
+    return Id;
   }
 
-  public void setID(int iD) {
-    ID = iD;
+  public void setId(int Id) {
+    this.Id = Id;
   }
 
   public String getEmail() {
@@ -72,7 +72,7 @@ public class UserAccountDTO {
 
   @Override
   public String toString() {
-    return "UserAccountDTO [ID=" + ID + ", email=" + email + ", password=" + password + ", firstname=" + firstname
+    return "UserAccountDTO [ID=" + Id + ", email=" + email + ", password=" + password + ", firstname=" + firstname
         + ", surname=" + surname + ", type=" + type + ", balance=" + balance + "]";
   }
 

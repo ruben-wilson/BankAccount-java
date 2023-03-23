@@ -9,8 +9,11 @@ import static org.mockito.Mockito.when;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
+import org.hibernate.result.Output;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -20,6 +23,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.autoconfigure.web.format.DateTimeFormatters;
 
 import com.bank.assessment.entities.Account;
+import com.bank.assessment.entities.User;
 import com.bank.assessment.repositories.AccountRepo;
 import com.bank.assessment.services.AccountServiceImpl;
 
@@ -110,8 +114,25 @@ public class AccountServiceTest {
     assertEquals(output.getBalance(), 200);
     assertEquals(output.getDate().getClass(), String.class);
     assertEquals(output.getDate(), date);
+  }
 
+  @Test
+  void findAllUserAccounts() {
 
+    User user = new User("email", "password");
+
+    Account account1 = new Account("1232ss", "current", "ruben", "wilson", 200.00, "1/2/12");
+    Account account2 = new Account("1232ss", "current", "ruben", "wilson", 200.00, "1/2/12");
+    Account account3 = new Account("1232ss", "current", "ruben", "wilson", 200.00, "1/2/12");
+
+    List<Account> output = Arrays.asList(account1, account2, account3); 
+    
+    when(accountRepo.findByUser_ID(user.getID())).thenReturn(output);
+
+    List<Account> result =  accountService.findUsersAccounts(user.getID());
+
+    assertNotNull(output);
+    assertEquals(output, result);
   }
 
 

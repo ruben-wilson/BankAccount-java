@@ -2,6 +2,9 @@ package com.bank.assessment.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -29,9 +32,13 @@ public class Account {
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "user_id")
+  @JsonBackReference
+  @JsonProperty(access = JsonProperty.Access.READ_ONLY)
   private User user;
 
   @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
+  @JsonBackReference
+  @JsonProperty(access = JsonProperty.Access.READ_ONLY)
   private List<Transaction> transactions;
 
   public Account(){
@@ -132,8 +139,7 @@ public class Account {
   @Override
   public String toString() {
     return "Account [ID=" + ID + ", accountnum=" + accountnum + ", type=" + type + ", firstname=" + firstname
-        + ", surname=" + surname + ", balance=" + balance + ", date=" + date + ", user=" + user + ", transactions="
-        + transactions + "]";
+        + ", surname=" + surname + ", balance=" + balance + ", date=" + date + "]";
   }
 
 

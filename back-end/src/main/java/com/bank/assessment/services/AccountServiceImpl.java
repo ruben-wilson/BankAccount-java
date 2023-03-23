@@ -2,6 +2,7 @@ package com.bank.assessment.services;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -16,6 +17,10 @@ public class AccountServiceImpl implements AccountService{
 
   @Autowired
   AccountRepo accountRepo;
+
+  public List<Account> findUsersAccounts(int user_id) {
+    return accountRepo.findByUser_ID(user_id);
+  }
 
   public Account createAccount(Account account) {
     account.setAccountNum(this.generateAccountNum(account));
@@ -51,6 +56,10 @@ public class AccountServiceImpl implements AccountService{
 
       return null;
     }
+  }
+
+  public List<Account> findAll() {
+    return accountRepo.findAll();
   }
 
   

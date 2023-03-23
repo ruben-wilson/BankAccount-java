@@ -2,6 +2,9 @@ package com.bank.assessment.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,17 +24,29 @@ public class User {
   private String password;
 
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+  @JsonBackReference
+  @JsonProperty(access = JsonProperty.Access.READ_ONLY)
   private List<Account> accounts;
 
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+  @JsonBackReference
+  @JsonProperty(access = JsonProperty.Access.READ_ONLY)
   private List<Transaction> transactions;
 
   public User(){
-    super();
+    super(); 
   }
 
   public User(String email, String password) {
     super();
+    this.email = email;
+    this.password = password;
+  }
+
+  public User(String firstname, String surname, String email, String password) {
+    super();
+    this.firstname = firstname;
+    this.surname = surname;
     this.email = email;
     this.password = password;
   }
@@ -56,8 +71,8 @@ public class User {
     this.transactions = transactions;
   }
 
-  public User(int iD, String firstname, String surname, String email, String password, List<Transaction> transactions) {
-    ID = iD;
+  public User(int id, String firstname, String surname, String email, String password, List<Transaction> transactions) {
+    ID = id;
     this.firstname = firstname;
     this.surname = surname;
     this.email = email;
@@ -70,8 +85,8 @@ public class User {
   }
 
 
-  public void setID(int iD) {
-    ID = iD;
+  public void setID(int id) {
+    ID = id;
   }
 
 
@@ -128,8 +143,12 @@ public class User {
     this.transactions = transactions;
   }
 
+  @Override
+  public String toString() {
+    return "User [ID=" + ID + ", firstname=" + firstname + ", surname=" + surname + ", email=" + email + ", password="
+        + password + "]";
+  }
 
-  
   
 
 
