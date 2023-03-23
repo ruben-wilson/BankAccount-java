@@ -36,7 +36,7 @@
         </a>
       </nav>
       <!-- nav bar -->
-          <div class="row" style="margin-left: 2rem; margin-right: 2rem; margin-top: 8rem; justify-content: space-between;">
+          <div class="row" style="margin-left: 2rem; margin-right: 2rem; margin-top: 4rem; justify-content: space-between;">
             <div class="col-xl-3 col-sm-6 col-12">
               <div class="card">
                 <div class="card-content">
@@ -104,7 +104,7 @@
       <!-- bank accounts -->
         <section id="stats-subtitle">
       
-          <div class="row">
+          <div class="row" >
 
               <%
               List<Account> accountList = (List<Account>) request.getAttribute("userAccounts");

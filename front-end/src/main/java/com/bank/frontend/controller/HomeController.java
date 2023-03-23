@@ -58,8 +58,6 @@ public class HomeController {
 
       List<Account> userAccounts = response.getBody();
 
-      // List<Account> userAccounts = (List<Account>) restTemplate.postForObject(url, user, List.class);
-
       double totalSavings = userAccounts.stream()
                   .filter(a -> a.getType().equals("savingsAccount") )
                   .map(a -> a.getBalance())
@@ -73,9 +71,7 @@ public class HomeController {
       mv.addObject("totalSavings", totalSavings);
       mv.addObject("totalMoney", totalMoney);
       mv.addObject("userAccounts", userAccounts);
-                 
-
-      System.out.println(totalSavings);
+        
 
       return mv;
     }
@@ -92,8 +88,6 @@ public class HomeController {
     String url = "http://localhost:8080/login";
 
     User response = restTemplate.postForObject(url, user, User.class);
-
-    System.out.println("login 35: " + response);
     
     model.addAttribute("user", response);
 

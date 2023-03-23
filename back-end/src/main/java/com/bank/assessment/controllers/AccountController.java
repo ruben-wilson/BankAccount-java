@@ -44,9 +44,10 @@ public class AccountController {
   } 
 
   @PostMapping("/findAccount")
-  public Account findAccount(@RequestBody Account account) {
+  public Account findAccount(@RequestBody int accountId) {
 
-    return accountService.findAccount(account.getID());
+    System.out.println(accountId);
+    return accountService.findAccount(accountId);
   }
 
   @PostMapping("/findUserAccounts")

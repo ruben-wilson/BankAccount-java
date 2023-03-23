@@ -10,12 +10,15 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.bank.frontend.dtos.UserAccountDTO;
 import com.bank.frontend.model.Account;
@@ -40,10 +43,6 @@ public class AccountController {
   public String postAccount(@ModelAttribute Account account, @ModelAttribute User user){
     
     account.setType(account.createType());
-
-    // System.out.println("account 29: " + account);
-
-    // System.out.println("account 29: " + user);
     
     UserAccountDTO dto = new UserAccountDTO(user, account);
 
@@ -55,5 +54,19 @@ public class AccountController {
 
     System.out.println("account 32: " + response);
     return "redirect:/";
+  }
+
+  @GetMapping("/account/{accountId}")
+  public ModelAndView accountPage(@PathVariable("accountId") int accountId){
+
+    ModelAndView mv = new ModelAndView();
+    mv.setViewName("account");
+  
+    String url = "http://localhost:8080/findAccount";
+    Account response = restTemplate.postForObject(url, accountId, Account.class);
+  
+    mv.addObject("account", response);
+
+    return mv;
   }
 }
