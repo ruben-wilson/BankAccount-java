@@ -43,11 +43,19 @@ public class AccountController {
     return response != null ? "received" : "Error";  
   } 
 
+  @PostMapping("/findAccount")
+  public Account findAccount(@RequestBody Account account) {
+
+    return accountService.findAccount(account.getID());
+  }
+
   @PostMapping("/findUserAccounts")
   public List<Account> findUserAccounts(@RequestBody User user){
   
    return accountService.findUsersAccounts(user.getID());
   }
+
+
 
   @GetMapping("/allAccounts")
   public List<Account> allAccounts() {

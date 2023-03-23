@@ -1,4 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.bank.frontend.model.Account" %>
   <!DOCTYPE html>
   <html lang="en">
 
@@ -28,7 +32,7 @@
         <a class="navbar-brand" href="#">
           <img src="https://www.bankinnovationignite.com/wp-content/uploads/2022/07/bankinnovationignite.com_.jpg" width="30" height="30" class="d-inline-block align-top"
             alt="">
-          Bootstrap
+          BankApp
         </a>
       </nav>
       <!-- nav bar -->
@@ -97,68 +101,61 @@
           </div>
         </section>
         
-      
+      <!-- bank accounts -->
         <section id="stats-subtitle">
       
           <div class="row">
-            <div class="col-xl-6 col-md-12">
-              <div class="card overflow-hidden">
-                <div class="card-content">
-                  <div class="card-body cleartfix">
-                    <div class="media align-items-stretch">
-                      <div class="align-self-center">
-                        <i class="icon-pencil primary font-large-2 mr-2"></i>
+
+              <%
+              List<Account> accountList = (List<Account>) request.getAttribute("userAccounts");
+                for(Account account : accountList){
+              %>
+                      <div class="col-xl-6 col-md-12">
+                        <% String accountUrl = "/account/" + account.getId(); %>
+                        <form action=<%= accountUrl %>>
+                          <div class="card overflow-hidden">
+                            <div class="card-content">
+                              <div class="card-body cleartfix">
+                                <div class="media align-items-stretch">
+                                  <div class="align-self-center">
+                                    <% String icon = account.getType().equals("savingsAccount") ? "icon-diamond warning font-large-2 mr-2" : "icon-credit-card warning font-large-2 mr-2";
+                                    %>
+                                    <button type="submit" class="btn">
+                                    <i class="icon-settings warning font-large-2 mr-2" ></i>
+                                    </button>
+                                  </div>
+                                  <div class="media-body">
+                                    <h4><%= account.getType().equals("savingsAccount") ? "Savings Account" : "Current Account" %></h4>
+                                    <span><%= account.getAccountNum() %></span>
+                                  </div>
+                                  <div class="align-self-center">
+                                    <h1>£ <%= account.getBalance() %></h1>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
                       </div>
-                      <div class="media-body">
-                        <h4>Total Posts</h4>
-                        <span>Monthly blog posts</span>
-                      </div>
-                      <div class="align-self-center">
-                        <h1>18,000</h1>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-      
-            <div class="col-xl-6 col-md-12">
-              <div class="card">
-                <div class="card-content">
-                  <div class="card-body cleartfix">
-                    <div class="media align-items-stretch">
-                      <div class="align-self-center">
-                        <i class="icon-speech warning font-large-2 mr-2"></i>
-                      </div>
-                      <div class="media-body">
-                        <h4>Total Comments</h4>
-                        <span>Monthly blog comments</span>
-                      </div>
-                      <div class="align-self-center">
-                        <h1>84,695</h1>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+                <% } %>
+
       
           <div class="row">
+
             <div class="col-xl-6 col-md-12">
               <div class="card">
                 <div class="card-content">
                   <div class="card-body cleartfix">
                     <div class="media align-items-stretch">
                       <div class="align-self-center">
-                        <h1 class="mr-2">$76,456.00</h1>
+                        <h1 class="mr-2">£ <%= request.getAttribute("totalMoney")%></h1>
                       </div>
                       <div class="media-body">
-                        <h4>Total Sales</h4>
-                        <span>Monthly Sales Amount</span>
+                        <h4>Net Balance</h4>
+                        <span>Total balance across all accounts</span>
                       </div>
                       <div class="align-self-center">
-                        <i class="icon-heart danger font-large-2"></i>
+                        <i class="icon-trophy danger font-large-2"></i>
                       </div>
                     </div>
                   </div>
@@ -172,14 +169,14 @@
                   <div class="card-body cleartfix">
                     <div class="media align-items-stretch">
                       <div class="align-self-center">
-                        <h1 class="mr-2">$36,000.00</h1>
+                        <h1 class="mr-2">£ <%= request.getAttribute("totalSavings")%></h1>
                       </div>
                       <div class="media-body">
-                        <h4>Total Cost</h4>
-                        <span>Monthly Cost</span>
+                        <h4>Total Savings</h4>
+                        <span>across all accounts</span>
                       </div>
                       <div class="align-self-center">
-                        <i class="icon-wallet success font-large-2"></i>
+                        <i class="icon-diamond primary font-large-2"></i>
                       </div>
                     </div>
                   </div>

@@ -37,7 +37,7 @@ public class AccountServiceImpl implements AccountService{
 
   public String generateAccountNum(Account account) {
 
-    return account.getType()  == "savingsAccount" ? "S3V" + Integer.toString(this.randomNumberGenerator()) : "C6N" + Integer.toString(this.randomNumberGenerator());
+    return account.getType().equals("savingsAccount") ? "S3V" + Integer.toString(this.randomNumberGenerator()) : "C6N" + Integer.toString(this.randomNumberGenerator());
   }
 
   public int randomNumberGenerator(){
@@ -52,6 +52,7 @@ public class AccountServiceImpl implements AccountService{
     try {
 
       return accountRepo.save(account);
+
     } catch (Exception e) {
 
       return null;
@@ -60,6 +61,11 @@ public class AccountServiceImpl implements AccountService{
 
   public List<Account> findAll() {
     return accountRepo.findAll();
+  }
+
+  public Account findAccount(int id) {
+    
+    return accountRepo.findById(id).get();
   }
 
   

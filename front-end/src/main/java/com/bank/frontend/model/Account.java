@@ -2,6 +2,7 @@ package com.bank.frontend.model;
 
 public class Account {
 
+  private int id;
   private String firstname;
   private String accountnum;
   private String date;
@@ -31,6 +32,8 @@ public class Account {
     this.balance = balance;
     this.date = date;
   }
+  
+  
   
   public String createType(){
     return this.type == null ? this.getInlineRadioOptions() : this.getType();
@@ -71,11 +74,11 @@ public class Account {
     this.balance = balance;
   }
 
-  public String getAccountnum() {
+  public String getAccountNum() {
     return this.accountnum;
   }
 
-  public void setAccountnum(String accountnum) {
+  public void setAccountNum(String accountnum) {
     this.accountnum = accountnum;
   }
 
@@ -99,6 +102,14 @@ public class Account {
   public String toString() {
     return "Account [firstname=" + firstname + ", accountnum=" + accountnum + ", date=" + date + ", surname=" + surname
         + ", type=" + type + ", balance=" + balance + ", inlineRadioOptions=" + inlineRadioOptions + "]";
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public String getAccountnum() {
+    return accountnum;
   }
 
 
