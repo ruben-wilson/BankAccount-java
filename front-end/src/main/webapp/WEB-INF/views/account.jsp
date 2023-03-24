@@ -85,24 +85,42 @@
           </section>
 
           <!-- withdraw and deposit buttons -->
+          
           <section>
             <div style="justify-content: space-around; display: flex;">
 
               <div class="col-xl-3 col-sm-6 col-12">
                 <div class="card">
+                  
                   <div class="card-content">
                     <div class="card-body">
                       <div class="media d-flex">
-                        <div class="align-self-center">
-                          <i class="icon-login danger font-large-2 float-left"></i>
+                        <div class="align-self-center">  
+                            <i class="icon-login danger font-large-2 float-left"></i>
                         </div>
                         <div class="media-body text-right">
-                          <h3>Deposit</h3>
-                          <span>from account</span>
+                          
+                            <div class="btn-group dropend">
+                              <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                <h3>Deposit</h3>
+                              </button>
+                              <ul class="dropdown-menu">
+                                <form action="/deposit" method="post">
+                                  <li>
+                                    <input name="deposit" type="text"/>
+                                  </li>
+                                  <li>
+                                    <button class="btn btn-outline-light btn-sm px-5" type="submit">Deposit Now!</button>
+                                  </li>
+                                </form>
+                              </ul>
+                            </div>
+                          
                         </div>
                       </div>
                     </div>
                   </div>
+                  
                 </div>
               </div>
 
@@ -113,12 +131,22 @@
                       <div class="media d-flex">
                         
                         <div class="media-body text-left">
-                          <h3>Withdraw</h3>
-                          <span>from account</span>
+
+                          <div class="btn-group dropend">
+                            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                              <h3>Withdraw
+                              </h3>
+                            </button>
+                            <ul class="dropdown-menu">
+                              <!-- Dropdown menu links -->
+                            </ul>
+                          </div>
+
                         </div>
                         <div class="align-self-center">
                           <i class="icon-logout danger font-large-2 float-left"></i>
                         </div>
+
                       </div>
                     </div>
                   </div>
@@ -175,9 +203,8 @@
 
 
 
-          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
-            integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
-            crossorigin="anonymous"></script>
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
         </body>
 
         </html>
