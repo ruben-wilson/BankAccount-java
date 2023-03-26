@@ -6,7 +6,7 @@ You’ve been asked to design and implement a 3-Tier based Enterprise Java appli
 
 heres a link to a quick walk through of the application.
 
-[![walk through]({image-url})]({<https://youtu.be/t83B3XQPR54>} "video walk through")
+[![walk through]({image-url})](<https://youtu.be/t83B3XQPR54> "video walk through")
 
 ## Usage
 
