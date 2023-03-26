@@ -4,7 +4,7 @@ You’ve been asked to design and implement a 3-Tier based Enterprise Java appli
 
 ## Video walk through
 
-heres a link to a quick walk through of the application.
+click on image below to watch video!
 
 [![walk through](./images/homePage.png)](<https://youtu.be/t83B3XQPR54> "video walk through")
 
