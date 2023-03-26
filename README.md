@@ -6,8 +6,7 @@ You’ve been asked to design and implement a 3-Tier based Enterprise Java appli
 
 heres a link to a quick walk through of the application.
 
-<video src="https://youtu.be/t83B3XQPR54" controls="controls" style="max-width: 730px;">
-</video>
+[![walk through]({image-url})]({https://youtu.be/t83B3XQPR54} "video walk through")
 
 ## Usage
 
@@ -23,8 +22,8 @@ heres a link to a quick walk through of the application.
 
 (note a Mysql database must be connected to the backend for project to run - in the application.properties)
 
+## App Spec
 
-## App Spec 
 -Account numbers must be automatically generated from a starting integer value and given a prefix to indicate the account type.
 
 - Each Object Type Current or savings accounts must be capable of storing transactional activity via a List/SetCollectionFieldsTransaction TypeDeposit, Withdraw, Opening Balance, Reversal Amount double Balance double Date of TransactionLocalDateTime
@@ -45,5 +44,4 @@ heres a link to a quick walk through of the application.
 
 - All attempts to go overdrawn or exceed the limit will be entered in the transaction history as a reversal and written to a database table containing the account number, name and amount that was attempted to be withdrawn along with the balance at the time and the overdraft amount if any.
 
-- If a savings account exceeds £1000 an exception will be thrown to inform the customer,they qualify for Mystery reward / offer. A web service will be called which will return a description of a prize. A flag must be set on the account not to offer a reward again until they have a thousand pounds more in the account. 
-
+- If a savings account exceeds £1000 an exception will be thrown to inform the customer,they qualify for Mystery reward / offer. A web service will be called which will return a description of a prize. A flag must be set on the account not to offer a reward again until they have a thousand pounds more in the account.
