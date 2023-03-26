@@ -13,6 +13,14 @@ public class TransactionAccountUserDTO {
     super();
   }
 
+
+  public TransactionAccountUserDTO(String email, int accountId, String transactiontype, double amount) {
+    this.email = email;
+    this.accountId = accountId;
+    this.transactiontype = transactiontype;
+    this.amount = amount;
+  }
+
   public String getEmail() {
     return email;
   }
@@ -61,6 +69,14 @@ public class TransactionAccountUserDTO {
     this.date = date;
   }
 
+
+  @Override
+  public String toString() {
+    return "TransactionAccountUserDTO [email=" + email + ", accountId=" + accountId + ", transactiontype="
+        + transactiontype + ", amount=" + amount + ", balance=" + balance + ", date=" + date + "]";
+  }
+
+  
   
 }
 

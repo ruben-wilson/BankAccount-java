@@ -43,9 +43,9 @@ public class HomeController {
       mv.setViewName("login");
       return mv;
     }else{
+      mv.setViewName("home");
 
       String url = "http://localhost:8080/findUserAccounts";
-      mv.setViewName("home");
 
       HttpHeaders headers = new HttpHeaders();
       headers.setContentType(MediaType.APPLICATION_JSON);

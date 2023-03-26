@@ -68,6 +68,10 @@ public class AccountServiceImpl implements AccountService{
     return accountRepo.findById(id).get();
   }
 
+  public void updateAccountBalance(int id, double balance) {
+    accountRepo.updateBalanceById(balance, id);
+  }
+
   
 
 }

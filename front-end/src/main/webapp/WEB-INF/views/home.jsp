@@ -29,9 +29,9 @@
   <body>
     <!-- nav bar -->
       <nav class="navbar navbar-light " style="background-color: #F5F7FA;">
-        <a class="navbar-brand" href="#">
-          <img src="https://www.bankinnovationignite.com/wp-content/uploads/2022/07/bankinnovationignite.com_.jpg" width="30" height="30" class="d-inline-block align-top"
-            alt="">
+        <a class="navbar-brand" href="/">
+          <img src="https://www.bankinnovationignite.com/wp-content/uploads/2022/07/bankinnovationignite.com_.jpg" width="30"
+            height="30" class="d-inline-block align-top" alt="">
           BankApp
         </a>
       </nav>

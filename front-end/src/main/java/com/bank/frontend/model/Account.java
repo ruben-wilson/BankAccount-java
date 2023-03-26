@@ -116,6 +116,14 @@ public class Account {
     return accountnum;
   }
 
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public void setAccountnum(String accountnum) {
+    this.accountnum = accountnum;
+  }
+
 
   
   

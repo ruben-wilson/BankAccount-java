@@ -61,4 +61,11 @@ public class TransactionAccountUserDTO {
     this.date = date;
   }
 
+  @Override
+  public String toString() {
+    return "TransactionAccountUserDTO [email=" + email + ", accountId=" + accountId + ", transactiontype="
+        + transactiontype + ", amount=" + amount + ", balance=" + balance + ", date=" + date + "]";
+  }
+
+  
 }

@@ -33,51 +33,12 @@ You’ve been asked to design and implement a 3-Tier based Enterprise Java appli
 ### Account class design 
 ![account](./diagrams/account.png)
 
-## Database Design 
+### Database Design 
 ![db](./diagrams/database.png)
-
-## Database Queries  
-
-```Sql
-CREATE table User( 
-   ID INT AUTO_INCREMENT,
-   firstName varChar(255),
-   surname varChar(255),
-   email varChar(255),
-   PRIMARY KEY(ID)
-);
-
-CREATE table Transaction( 
-   ID INT AUTO_INCREMENT,
-   user_ID INT,
-   account_ID INT,
-   transactionType varChar(255),
-   amount double(30,30),
-   balance double(30,30),
-   date varChar(14),
-   PRIMARY KEY(ID),
-   FOREIGN KEY (User_ID) REFERENCES User(ID),
-   FOREIGN KEY (account_ID) REFERENCES Account(ID)
-);
-
-CREATE table Account( 
-   ID INT AUTO_INCREMENT,
-   user_ID INT,
-   accountNum varChar(255),
-   firstName varChar(255),
-   surname varChar(255),
-   balance double(30,30),
-   date varChar(14),
-   PRIMARY KEY(ID),
-   FOREIGN KEY (User_ID) REFERENCES User(ID)
-);
-```
-
 
 ## Sprints
 
-**sprint1**
-
+### sprint1
 
 as a user 
 i should be able to sign in 
@@ -90,7 +51,7 @@ account
 as a user 
 i should be able to create a account
 
-**sprint2**
+### sprint2
 
 as a user 
 i should be able to see all 
@@ -106,9 +67,3 @@ i should be able to withdraw money from my account
 as a user 
 i should be able to see
 all transactions related to an account 
-
-
-**Bugs to fix**
-
-on /account post controller in front end:
-the @modelAttribute when trying to access user mistakes the info coming from the form and renaims the user attr in the session. 

@@ -1,5 +1,8 @@
 package com.bank.assessment.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -25,13 +28,22 @@ public class Transaction {
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "user_ID")
+  @JsonBackReference
+  @JsonProperty(access = JsonProperty.Access.READ_ONLY)
   private User user;
 
   @ManyToOne
   @JoinColumn(name = "account_ID")
+  @JsonBackReference
+  @JsonProperty(access = JsonProperty.Access.READ_ONLY)
   private Account account;
 
   
+  
+
+  public Transaction() {
+    super();
+  }
 
   public Transaction(int iD, String transactiontype, double amount, double balance, String date) {
     ID = iD;
@@ -104,6 +116,14 @@ public class Transaction {
   public void setAccount(Account account) {
     this.account = account;
   }
+
+  @Override
+  public String toString() {
+    return "Transaction [ID=" + ID + ", transactiontype=" + transactiontype + ", amount=" + amount + ", balance="
+        + balance + ", date=" + date + ", user=" + user + ", account=" + account + "]";
+  }
+
+  
   
   
 }
