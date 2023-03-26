@@ -6,8 +6,7 @@ You’ve been asked to design and implement a 3-Tier based Enterprise Java appli
 
 heres a link to a quick walk through of the application.
 
-<video width="320" height="240" controls>
-    <source src="https://youtu.be/t83B3XQPR54" type="video/mp4">
+<video src="https://youtu.be/t83B3XQPR54" controls="controls" style="max-width: 730px;">
 </video>
 
 ## Usage
